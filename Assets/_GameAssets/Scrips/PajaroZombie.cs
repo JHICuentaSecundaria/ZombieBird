@@ -9,11 +9,14 @@ public class PajaroZombie : MonoBehaviour {
     [SerializeField] float fuerza = 30.0f;
     [SerializeField] Text puntuacion;
     [SerializeField] ParticleSystem prefabExplosion;
+
+    AudioClip golpe;
     Rigidbody rb;
     int puntos = 0;
 
 	void Start ()
     {
+        golpe = GetComponent<AudioSource>().clip;
         GameConfig.ArrancaJuego();
         rb = GetComponent<Rigidbody>();
         ActualizarPuntuacion();
