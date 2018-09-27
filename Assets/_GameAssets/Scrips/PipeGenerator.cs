@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class PipeGenerator : MonoBehaviour {
 
+    [Header("Game Objects generados")]
     [SerializeField] Transform prefabTuberia;
+    [Header("Tiempo de generacion")]
+    [SerializeField] float ratioGeneracionTuberias = 1.3f;
+
+    AudioSource sonidoEmpezarPartida;
 
 	void Start () {
-        InvokeRepeating ("GeneratePipe", 0, 1.3f);
+        sonidoEmpezarPartida = GetComponent<AudioSource>();
+        sonidoEmpezarPartida.Play();
+        InvokeRepeating ("GeneratePipe", 0, ratioGeneracionTuberias);
 	}
 
     void GeneratePipe ()
